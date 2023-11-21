@@ -1,0 +1,1 @@
+gunicorn -w 4 main:app --bind 0.0.0.0:9000 --log-file=- --log-level=info
