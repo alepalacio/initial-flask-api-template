@@ -12,3 +12,6 @@ class Configuration:
     LOGGING_FORMAT = '%(asctime)s %(levelname)s [%(name)s:%(funcName)s:%(lineno)d] %(message)s'
     LOGGING_LOCATION = 'application.log'
     LOGGING_LEVEL = logging.INFO
+    OPENAPI_DOCS_URL = config("OPENAPI_DOCS_URL", default="/api/v1/docs") if ENVIRONMENT == 'staging' else None
+    OPENAPI_SCHEMA_URL = "/static/openapi.json" if ENVIRONMENT == 'staging' else None
+    OPENAPI_APP_NAME = config("OPENAPI_APP_NAME", default="API Documentation")

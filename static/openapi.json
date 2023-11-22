@@ -1,0 +1,105 @@
+    {
+    "openapi": "3.0.3",
+    "info": {
+        "title": "Albbus Lead Service API",
+        "description": "Albbus Lead Service API.",
+        "termsOfService": "http://swagger.io/terms/",
+        "version": "1.0.0"
+    },
+    "externalDocs": {
+        "description": "Find out more about Swagger",
+        "url": "http://swagger.io"
+    },
+    "tags": [
+        {
+        "name": "Healthcheck",
+        "description": "Check server status."
+        }
+    ],
+    "paths": {
+        "/health": {
+        "get": {
+            "tags": [
+            "Healthcheck"
+            ],
+            "summary": "Check server status.",
+            "description": "",
+            "responses": {
+            "200": {
+                "description": "Health OK.",
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "$ref": "#/components/schemas/Healthcheck"
+                    }
+                }
+                }
+            },
+            "401": {
+                "description": "Unauthorized.",
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "$ref": "#/components/schemas/Unauthorized"
+                    }
+                }
+                }
+            },
+            "500": {
+                "description": "Server error.",
+                "content": {
+                "application/json": {
+                    "schema": {
+                    "$ref": "#/components/schemas/CommonServerError"
+                    }
+                }
+                }
+            }
+            }
+        }
+        }
+    },
+    "components": {
+    "schemas": {
+        "Healthcheck": {
+        "type": "object",
+        "properties": {
+            "message": {
+            "type": "string",
+            "example": "API health is OK"
+            }
+            }
+        },
+        "Unauthorized": {
+            "type": "object",
+            "properties": {
+            "error_message": {
+                "type": "string",
+                "format": "string",
+                "example": "Unauthorized."
+            },
+            "status_code": {
+                "type": "integer",
+                "format": "int64",
+                "example": 401
+            }
+        }
+        },
+        "CommonServerError": {
+            "type": "object",
+            "properties": {
+            "error_message": {
+                "type": "string",
+                "format": "string",
+                "example": "Unexpected server error."
+            },
+            "status_code": {
+                "type": "integer",
+                "format": "int64",
+                "example": 500
+            }
+            }
+        }
+        }
+    }
+    }

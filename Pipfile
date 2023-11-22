@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 flask = "*"
 python-decouple = "*"
+flask-swagger-ui = "==4.11.1"
 
 [dev-packages]
 
